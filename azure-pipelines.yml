@@ -24,24 +24,13 @@ jobs:
     vmImage: $(image)
   strategy:
     matrix:
-      'Ubuntu 20.04 LTS (Release, x86_64)':
-        image: ubuntu-20.04
-        build_type: Release
-        sanitizer: undefined
-        cc: gcc
       'Windows 2019 with GCC 10 (Debug, x86_64)':
         image: windows-2019
         build_type: Debug
         idlc_xtests: off
-        generator: 'MinGW Makefiles'
+        generator: 'Unix Makefiles'
         cc: 'C:/msys64/mingw64/bin/gcc.exe'
         cxx: 'C:/msys64/mingw64/bin/g++.exe'
-      'Ubuntu 22.04 LTS with default GCC (Release, Iceoryx, Static, x86_64)':
-        image: ubuntu-22.04
-        idlc_xtests: off
-        build_type: Release
-        sharedlibs: off
-        iceoryx: on
 
   steps:
     - template: /.azure/templates/build-test.yml
