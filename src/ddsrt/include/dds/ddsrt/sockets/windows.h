@@ -10,7 +10,13 @@
 extern "C" {
 #endif
 
-typedef SOCKET ddsrt_socket_t;
+#ifdef _WIN32
+ typedef int sock_t;
+#else
+ typedef SOCKET sock_t;
+#endif
+
+typedef sock_t ddsrt_socket_t;
 #define DDSRT_INVALID_SOCKET (INVALID_SOCKET)
 #define PRIdSOCK PRIuPTR
 

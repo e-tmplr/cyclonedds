@@ -18,8 +18,7 @@
 #include "idl/retcode.h"
 #include "idl/file.h"
 
-#ifndef _SSIZE_T_DEFINED
-#define _SSIZE_T_DEFINED
+#if WIN32
 # include <basetsd.h>
 typedef SSIZE_T ssize_t;
 #endif
