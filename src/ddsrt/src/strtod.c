@@ -197,7 +197,7 @@ ddsrt_strtod(const char *nptr, char **endptr, double *dblptr)
   // 3. The value being parsed results in `-nan` or `nan`.
   // 4. The value being parsed results in `-inf` or `inf`.
   if (errno == ERANGE || !successfully_parsed
-      || isnan(dbl) || isinf(dbl)) {
+      || dbl != dbl || isinf(dbl)) {
     ret = DDS_RETCODE_OUT_OF_RANGE;
   } else {
     errno = orig_errno;
