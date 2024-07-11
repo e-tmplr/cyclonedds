@@ -25,6 +25,9 @@
 #include <inttypes.h>
 #include <wchar.h>
 
+#ifndef _SSIZE_T_DEFINED
+#define _SSIZE_T_DEFINED
 typedef SSIZE_T ssize_t;
+#endif
 
 #endif /* DDSRT_TYPES_WINDOWS_H */
