@@ -18,6 +18,21 @@ variables:
   cyclonedds_uri: '<CycloneDDS><Domain><Internal><EnableExpensiveChecks>rhc,whc</EnableExpensiveChecks><LivelinessMonitoring>true</LivelinessMonitoring></Internal><Tracing><Verbosity>config</Verbosity><OutputFile>stderr</OutputFile></Tracing></Domain></CycloneDDS>'
 
 jobs:
+- job: build_and_test
+  displayName: Build and test Cyclone
+  pool:
+    vmImage: $(image)
+  strategy:
+    matrix:
+      'Ubuntu 22.04 LTS (Release, x86_64)':
+        image: ubuntu-22.04
+        build_type: Release
+        sanitizer: undefined
+        cc: gcc
+
+  steps:
+    - template: /.azure/templates/build-test.yml
+
 - job: coverage_and_test_report
   displayName: Coverage and Tests Report
   dependsOn: build_and_test
