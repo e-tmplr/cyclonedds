@@ -11,10 +11,9 @@ extern "C" {
 #endif
 
 #ifdef _WIN32
- //typedef SOCKET sock_t;
  typedef int sock_t;
 #else
- typedef int sock_t;
+ typedef SOCKET sock_t;
 #endif
 typedef sock_t ddsrt_socket_t;
 
