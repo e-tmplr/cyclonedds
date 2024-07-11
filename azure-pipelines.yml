@@ -18,23 +18,6 @@ variables:
   cyclonedds_uri: '<CycloneDDS><Domain><Internal><EnableExpensiveChecks>rhc,whc</EnableExpensiveChecks><LivelinessMonitoring>true</LivelinessMonitoring></Internal><Tracing><Verbosity>config</Verbosity><OutputFile>stderr</OutputFile></Tracing></Domain></CycloneDDS>'
 
 jobs:
-- job: build_and_test
-  displayName: Build and test Cyclone
-  pool:
-    vmImage: $(image)
-  strategy:
-    matrix:
-      'Windows 2019 with GCC 10 (Debug, x86_64)':
-        image: windows-2019
-        build_type: Debug
-        idlc_xtests: off
-        generator: 'MinGW Makefiles'
-        cc: 'C:/msys64/mingw64/bin/gcc.exe'
-        cxx: 'C:/msys64/mingw64/bin/g++.exe'
-
-  steps:
-    - template: /.azure/templates/build-test.yml
-
 - job: coverage_and_test_report
   displayName: Coverage and Tests Report
   dependsOn: build_and_test
