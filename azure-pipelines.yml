@@ -29,6 +29,18 @@ jobs:
         build_type: Release
         sanitizer: undefined
         cc: gcc
+      'Windows 2019 with GCC 10 (Debug, x86_64)':
+        image: windows-2019
+        build_type: Debug
+        idlc_xtests: off
+        generator: 'MinGW Makefiles'
+        toolchain_file: toolchain-mingw64.cmake
+      'Windows 2019 with GCC 10 (Debug, x86)':
+        image: windows-2019
+        build_type: Debug
+        idlc_xtests: off
+        generator: 'MinGW Makefiles'
+        toolchain_file: toolchain-mingw32.cmake
 
   steps:
     - template: /.azure/templates/build-test.yml
